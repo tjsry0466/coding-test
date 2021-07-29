@@ -1,4 +1,4 @@
-n , m = map(int, input().split())
+n, m = map(int, input().split())
 alpha = input().split()
 alpha.sort()
 
@@ -13,7 +13,6 @@ def check(password):
     return ja >= 2 and mo >= 1
 
 def go(n, alpha, password, i):
-
     if len(password) == n:
         if check(password):
             print(password)

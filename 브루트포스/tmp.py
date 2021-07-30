@@ -1,27 +1,18 @@
-n, m = map(int, input().split())
-alpha = input().split()
-alpha.sort()
+n = int(input())
 
-def check(password):
-    mo = 0
-    ja = 0
-    for i in password:
-        if i in 'aeiou':
-            mo +=1
-        else:
-            ja +=1
-    return ja >= 2 and mo >= 1
+a = [list(map(int, input().split())) for _ in range(n)]
 
-def go(n, alpha, password, i):
-    if len(password) == n:
-        if check(password):
-            print(password)
-        return
+def go(index, first, second):
 
-    if i == len(alpha):
-        return
 
-    go(n, alpha, password+alpha[i], i+1)
-    go(n, alpha, password, i+1)
 
-go(n, alpha, "", 0)
+    ans = -1
+    t1 = go(index+1, first+[index], second)
+    if ans == -1 or (t1 != -1 and ans > t1):
+        ans = t1
+    t2 = go(index+1, first, second+[index])
+    if ans == -1 or (t2 != -1 and ans > t2):
+        ans = t2
+    return ans
+
+

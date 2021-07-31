@@ -1,15 +1,17 @@
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
 ans = 0
-def go(index, sum):
+def go(i, s):
     global ans
-    if index == n:
-        if sum == m:
-            ans +=1
+    if i == n:
+        if s == m:
+            ans += 1
         return
-    go(index+1, sum+a[index])
-    go(index+1, sum)
-go(0,0)
+    go(i+1, s+a[i])
+    go(i+1, s)
+
+go(0, 0)
 if m == 0:
-    ans -=1
+    ans -= 1
 print(ans)
+
